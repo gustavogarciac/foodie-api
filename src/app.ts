@@ -13,8 +13,6 @@ app.setErrorHandler((error, _req, reply) => {
 
   if (env.NODE_ENV !== "production") {
     console.error(error)
-  } else {
-    // TODO: Connect to datadog
   }
 
   return reply.status(500).send({ message: "Internal server error." })
