@@ -3,6 +3,8 @@ import { errorHandler } from "./error-handler";
 import fastifySwagger from "@fastify/swagger";
 import { jsonSchemaTransform, serializerCompiler, validatorCompiler } from "fastify-type-provider-zod";
 import fastifySwaggerUi from "@fastify/swagger-ui";
+import { recipesRoutes } from "./http/controllers/recipes/routes";
+import { register } from "module";
 
 export const app = fastify()
 
@@ -22,6 +24,8 @@ app.register(fastifySwagger, {
 app.register(fastifySwaggerUi, {
   routePrefix: "/docs"
 })
+
+app.register(recipesRoutes)
 
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
