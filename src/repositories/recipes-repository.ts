@@ -1,5 +1,6 @@
 import { Recipe, Prisma } from "@prisma/client"
 
 export interface RecipesRepository {
-  create(data: Prisma.RecipeCreateInput): Promise<Recipe>
+  create(data: Prisma.RecipeUncheckedCreateInput): Promise<Recipe>
+  findBySlug(slug: string): Promise<Recipe | null>
 }
