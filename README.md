@@ -2,7 +2,7 @@ Foodie App:
 Full stack application where user can go from buying items from a restaurant to receive it in its home.
 
 # Requisitos Funcionais (RF):
-- [] Deve ser possível cadastrar um prato.
+- [x] Deve ser possível cadastrar um prato.
 - [] Deve ser possível se autenticar
 - [] Deve ser possível listar pratos.
 - [] Deve ser possível deletar um prato.
