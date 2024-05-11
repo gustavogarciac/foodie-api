@@ -4,7 +4,7 @@ import fastifySwagger from "@fastify/swagger";
 import { jsonSchemaTransform, serializerCompiler, validatorCompiler } from "fastify-type-provider-zod";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 import { recipesRoutes } from "./http/controllers/recipes/routes";
-import { register } from "module";
+import { categoriesRoutes } from "./http/controllers/categories/routes";
 
 export const app = fastify()
 
@@ -26,6 +26,7 @@ app.register(fastifySwaggerUi, {
 })
 
 app.register(recipesRoutes)
+app.register(categoriesRoutes)
 
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
