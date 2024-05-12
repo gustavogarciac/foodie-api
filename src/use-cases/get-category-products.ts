@@ -1,14 +1,13 @@
 import { RecipesRepository } from "@/repositories/recipes-repository";
-import { ResourceNotFoundError } from "./errors/resource-not-found-error";
 
-interface GetCategoryProcutsUseCaseParams {
+interface GetCategoryProductsUseCaseParams {
   categoryId: string
 }
 
-export class GetCategoryProcutsUseCase {
+export class GetCategoryProductsUseCase {
   constructor(private recipesRepository: RecipesRepository) {}
 
-  async execute({ categoryId} : GetCategoryProcutsUseCaseParams) {
+  async execute({ categoryId} : GetCategoryProductsUseCaseParams) {
     const products = await this.recipesRepository.findByCategoryId(categoryId)
 
     if(!products) return []

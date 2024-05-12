@@ -1,15 +1,15 @@
 import { RecipesRepository } from "@/repositories/recipes-repository";
 import { beforeEach, describe, expect, it } from "vitest";
-import { GetCategoryProcutsUseCase } from "../get-category-products";
+import { GetCategoryProductsUseCase } from "../get-category-products";
 import { InMemoryRecipesRepository } from "@/repositories/in-memory/in-memory-recipes-repository";
 
 let recipesRepository: RecipesRepository;
-let sut: GetCategoryProcutsUseCase;
+let sut: GetCategoryProductsUseCase;
 
 describe("Get Category Products", () => {
   beforeEach(() => {
     recipesRepository = new InMemoryRecipesRepository()
-    sut = new GetCategoryProcutsUseCase(recipesRepository)
+    sut = new GetCategoryProductsUseCase(recipesRepository)
   })
 
   it("shoult get category products", async () => {
