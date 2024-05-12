@@ -1,6 +1,6 @@
 import { RecipesRepository } from "@/repositories/recipes-repository";
 import { beforeEach, describe, expect, it } from "vitest";
-import { GetCategoryProductsUseCase } from "../get-category-products";
+import { GetCategoryProductsUseCase } from "../categories/get-category-products";
 import { InMemoryRecipesRepository } from "@/repositories/in-memory/in-memory-recipes-repository";
 
 let recipesRepository: RecipesRepository;

@@ -1,6 +1,6 @@
 import { CategoriesRepository } from "@/repositories/categories-repository";
 import { generateSlug } from "@/utils/generate-slug";
-import { CategoryAlreadyExistsError } from "./errors/category-already-exists";
+import { CategoryAlreadyExistsError } from "../errors/category-already-exists";
 
 interface CreateCategoryUseCaseParams {
   name: string

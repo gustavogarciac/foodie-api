@@ -1,6 +1,6 @@
 import { InMemoryRecipesRepository } from "@/repositories/in-memory/in-memory-recipes-repository"
 import { beforeEach, describe, expect, it } from "vitest"
-import { CreateRecipeUseCase } from "../create-recipe";
+import { CreateRecipeUseCase } from "../recipes/create-recipe";
 import { RecipeAlreadyExistsError } from "../errors/recipe-already-exists-error";
 
 let recipesRepository: InMemoryRecipesRepository;

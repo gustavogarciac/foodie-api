@@ -56,4 +56,26 @@ export class PrismaRecipesRepository implements RecipesRepository {
 
     return recipe
   }
+
+  async findById(id: string) {
+    const recipe = await prisma.recipe.findUnique({
+      where: {
+        id
+      }
+    })
+
+    if(!recipe) return null
+
+    return recipe
+  }
+
+  async delete(id: string) {
+    await prisma.recipe.delete({
+      where: {
+        id
+      }
+    })
+
+    return null
+  }
 }

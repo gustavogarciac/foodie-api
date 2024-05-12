@@ -1,7 +1,7 @@
 import { RecipesRepository } from "@/repositories/recipes-repository";
 import { generateSlug } from "@/utils/generate-slug";
 import { Category } from "@prisma/client";
-import { RecipeAlreadyExistsError } from "./errors/recipe-already-exists-error";
+import { RecipeAlreadyExistsError } from "../errors/recipe-already-exists-error";
 
 interface CreateRecipeUseCaseParams {
   name: string

@@ -38,4 +38,21 @@ export class InMemoryRecipesRepository implements RecipesRepository {
     const recipe = this.recipes.filter(recipe => recipe.categoryId === categoryId)
     return recipe
   }
+
+  async findById(id: string) {
+    const recipe = this.recipes.find(recipe => recipe.id === id)
+
+    if(!recipe) return null
+    
+    return recipe
+  }
+
+  async delete(id: string) {
+    const recipe = this.recipes.find(recipe => recipe.id === id)
+
+    if(!recipe) return null
+
+    this.recipes = this.recipes.filter(recipe => recipe.id !== id)
+    return null
+  }
 }

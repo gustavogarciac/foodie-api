@@ -1,5 +1,5 @@
 import { PrismaRecipesRepository } from "@/repositories/prisma/prisma-recipes-repository";
-import { GetCategoryProductsUseCase } from "../get-category-products";
+import { GetCategoryProductsUseCase } from "../categories/get-category-products";
 
 export function makeGetCategoryRecipes() {
   const recipesRepository = new PrismaRecipesRepository();

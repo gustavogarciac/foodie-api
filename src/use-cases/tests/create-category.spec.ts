@@ -1,6 +1,6 @@
 import { InMemoryCategoriesRepository } from "@/repositories/in-memory/in-memory-categories-repository";
 import { beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { CreateCategoryUseCase } from "../create-category";
+import { CreateCategoryUseCase } from "../categories/create-category";
 import { CategoryAlreadyExistsError } from "../errors/category-already-exists";
 
 let categoriesRepository: InMemoryCategoriesRepository
