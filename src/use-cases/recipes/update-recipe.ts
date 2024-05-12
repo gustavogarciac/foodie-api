@@ -1,5 +1,5 @@
 import { RecipesRepository } from "@/repositories/recipes-repository";
-import { Prisma, Recipe } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 
 interface UpdateRecipeUseCaseParams {

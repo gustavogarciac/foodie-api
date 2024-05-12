@@ -1,6 +1,7 @@
 import { Prisma } from "@prisma/client";
 import { RecipesRepository } from "../recipes-repository";
 import { prisma } from "@/lib/prismadb";
+import { generateSlug } from "@/utils/generate-slug";
 
 export class PrismaRecipesRepository implements RecipesRepository {
   async create(data: Prisma.RecipeUncheckedCreateInput) {
@@ -77,5 +78,36 @@ export class PrismaRecipesRepository implements RecipesRepository {
     })
 
     return null
+  }
+
+  async update(data: Prisma.RecipeUncheckedCreateInput) {
+    const recipeToBeUpdated = await prisma.recipe.findUnique({
+      where: {
+        id: data.id
+      }
+    })
+
+    if(!recipeToBeUpdated) {
+      return null
+    }
+
+    const updatedData = {
+      categoryId: data.categoryId ?? recipeToBeUpdated.categoryId,
+      description: data.description ?? recipeToBeUpdated.description,
+      imageUrl: data.imageUrl ?? recipeToBeUpdated.imageUrl,
+      name: data.name ?? recipeToBeUpdated.name,
+      price: data.price ?? recipeToBeUpdated.price,
+      slug: generateSlug(data.name) ?? recipeToBeUpdated.slug,
+      totalDiscount: data.totalDiscount ?? recipeToBeUpdated.totalDiscount,
+    }
+
+    const updatedRecipe = await prisma.recipe.update({
+      where: {
+        id: data.id
+      },
+      data: updatedData
+    })
+
+    return updatedRecipe
   }
 }
