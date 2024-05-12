@@ -46,4 +46,14 @@ export class PrismaRecipesRepository implements RecipesRepository {
 
     return recipe
   }
+
+  async findByCategoryId(categoryId: string) {
+    const recipe = await prisma.recipe.findMany({
+      where: {
+        categoryId
+      }
+    })
+
+    return recipe
+  }
 }

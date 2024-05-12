@@ -9,7 +9,7 @@ Full stack application where user can go from buying items from a restaurant to 
 - [] Deve ser possível atualizar um prato.
 - [] Deve ser possível receber dados de um prato específico.
 - [] Deve ser possível adicionar um prato aos favoritos.
-- [] Deve ser possível vincular pratos a categorias.
+- [X] Deve ser possível vincular pratos a categorias.
 - [] Deve ser possível listar todos os pratos vinculados a uma categoria.
 - [] Deve ser possível atualizar preços promocionais em um restaurante.
 - [] Deve ser possível listar pratos em um carrinho.
