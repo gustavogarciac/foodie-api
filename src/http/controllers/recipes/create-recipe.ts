@@ -1,6 +1,5 @@
-import { CreateRecipeUseCase } from "@/use-cases/recipes/create-recipe";
 import { makeCreateRecipeUseCase } from "@/use-cases/factories/make-create-recipe-use-case";
-import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
+import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
 
