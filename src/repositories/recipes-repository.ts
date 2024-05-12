@@ -6,4 +6,5 @@ export interface RecipesRepository {
   findByCategoryId(categoryId: string): Promise<Recipe[] | []>
   findById(id: string): Promise<Recipe | null>
   delete(id: string): Promise<null>
+  update(data: Prisma.RecipeUncheckedCreateInput): Promise<Recipe | null>
 }

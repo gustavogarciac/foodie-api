@@ -55,4 +55,34 @@ export class InMemoryRecipesRepository implements RecipesRepository {
     this.recipes = this.recipes.filter(recipe => recipe.id !== id)
     return null
   }
+
+  async update(data: Prisma.RecipeUncheckedCreateInput) {
+    const recipe = this.recipes.find(recipe => recipe.id === data.id)
+
+    if(!recipe) return null
+
+    const updatedRecipe = {
+      name: data.name ?? recipe.name,
+      description: data.description ?? recipe.description,
+      price: new Decimal(data.price.toString() ?? recipe.price.toString()),
+      totalDiscount: data.totalDiscount ?? recipe.totalDiscount,
+      imageUrl: data.imageUrl ?? recipe.imageUrl,
+      slug: generateSlug(data.name) ?? recipe.slug,
+      createdAt: recipe.createdAt,
+      updatedAt: new Date(),
+      categoryId: data.categoryId ?? recipe.categoryId
+    }
+
+    this.recipes = this.recipes.map(recipe => {
+      if(recipe.id === data.id) {
+        return {
+          ...updatedRecipe,
+          id: recipe.id
+        }
+      }
+      return recipe
+    })
+
+    return recipe
+  }
 }
