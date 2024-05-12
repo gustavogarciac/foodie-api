@@ -1,6 +1,8 @@
 import { ZodError } from "zod"
 import { env } from "./env"
 import { FastifyInstance } from "fastify"
+import { CategoryAlreadyExistsError } from "./use-cases/errors/category-already-exists"
+import { RecipeAlreadyExistsError } from "./use-cases/errors/recipe-already-exists-error"
 
 type FastifyErrorHandler = FastifyInstance['errorHandler']
 
@@ -14,6 +16,13 @@ export const errorHandler: FastifyErrorHandler = (error, _req, reply) => {
   if (env.NODE_ENV !== "production") {
     console.error(error)
   }
+
+  if (error instanceof CategoryAlreadyExistsError)
+    return reply.status(400).send({ issue: error.message })
+
+  if (error instanceof RecipeAlreadyExistsError)
+    return reply.status(400).send({ issue: error.message })
+
 
   return reply.status(500).send({ message: "Internal server error." })
 }
