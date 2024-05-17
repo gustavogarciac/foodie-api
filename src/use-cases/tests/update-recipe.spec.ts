@@ -41,7 +41,6 @@ describe("Update Recipe Use Case", () => {
      })
 
     const updatedRecipe = await recipesRepository.findById(recipe.id)
-    console.log(updatedRecipe)
     expect(updatedRecipe).not.toBe(null)
   })
 })

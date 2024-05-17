@@ -28,4 +28,14 @@ export class PrismaCategoriesRepository implements CategoriesRepository {
 
     return category
   }
+
+  async findById(id: string) {
+    const category = await prisma.category.findFirst({
+      where: {
+        id
+      }
+    })
+
+    return category
+  }
 }

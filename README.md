@@ -6,7 +6,7 @@ Full stack application where user can go from buying items from a restaurant to 
 - [] Deve ser possível se autenticar
 - [] Deve ser possível listar pratos.
 - [x] Deve ser possível deletar um prato.
-- [] Deve ser possível atualizar um prato.
+- [x] Deve ser possível atualizar um prato.
 - [] Deve ser possível receber dados de um prato específico.
 - [] Deve ser possível adicionar um prato aos favoritos.
 - [X] Deve ser possível vincular pratos a categorias.
