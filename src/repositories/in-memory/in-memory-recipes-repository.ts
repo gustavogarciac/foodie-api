@@ -86,8 +86,15 @@ export class InMemoryRecipesRepository implements RecipesRepository {
     return recipe
   }
 
-  async searchMany(query: string, page: number) {
-    const recipes = this.recipes.filter(recipe => recipe.name.includes(query))
+  async searchMany(query: string | null, page: number) {
+    let recipes
+    
+    if(query) {
+      recipes = this.recipes.filter(recipe => recipe.name.includes(query))
+    } else {
+      recipes = this.recipes
+    }
+
     return recipes
   }
 }

@@ -2,7 +2,7 @@ import { RecipesRepository } from "@/repositories/recipes-repository";
 import { Recipe } from "@prisma/client";
 
 interface SearchRecipeUseCaseParams {
-  query: string
+  query: string | null;
   page: number;
 }
 

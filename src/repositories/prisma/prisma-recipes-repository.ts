@@ -111,17 +111,27 @@ export class PrismaRecipesRepository implements RecipesRepository {
     return updatedRecipe
   }
 
-  async searchMany(query: string, page: number) {
-    const recipes = await prisma.recipe.findMany({
-      where: {
-        name: {
-          contains: query
-        }
-      },
-      skip: (page - 1) * 20,
-      take: 20
-    })
+  async searchMany(query: string | null, page: number) {
+    let recipes
 
+    if(query) {
+      recipes = await prisma.recipe.findMany({
+        where: {
+          name: {
+            contains: query,
+            mode: "insensitive"
+          }
+        },
+        skip: (page - 1) * 20,
+        take: 20
+      })
+    } else {
+      recipes = await prisma.recipe.findMany({
+        skip: (page - 1) * 20,
+        take: 20
+      })
+    }
+  
     return recipes
   }
 }
