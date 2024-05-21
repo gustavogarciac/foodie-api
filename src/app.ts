@@ -5,8 +5,24 @@ import { jsonSchemaTransform, serializerCompiler, validatorCompiler } from "fast
 import fastifySwaggerUi from "@fastify/swagger-ui";
 import { recipesRoutes } from "./http/controllers/recipes/routes";
 import { categoriesRoutes } from "./http/controllers/categories/routes";
+import fastifyJwt from "@fastify/jwt";
+import { env } from "./env";
+import fastifyCookie from "@fastify/cookie";
 
 export const app = fastify()
+
+app.register(fastifyJwt, {
+  secret: env.JWT_SECRET,
+  cookie: {
+    cookieName: 'token',
+    signed: true
+  },
+  sign: {
+    expiresIn: '50m'
+  }
+})
+
+app.register(fastifyCookie)
 
 app.register(fastifySwagger, {
   swagger: {

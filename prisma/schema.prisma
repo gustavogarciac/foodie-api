@@ -7,6 +7,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  ADMIN
+  MEMBER
+}
+
+model User {
+  id           String  @id @default(uuid())
+  name         String
+  email        String  @unique
+  role         Role    @default(MEMBER)
+  passwordHash String
+  imageUrl     String? @map("image_url")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+
+  @@map("users")
+}
+
 model Recipe {
   id            String  @id @default(uuid())
   name          String

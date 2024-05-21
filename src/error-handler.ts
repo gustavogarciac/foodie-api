@@ -4,6 +4,7 @@ import { FastifyInstance } from "fastify"
 import { CategoryAlreadyExistsError } from "./use-cases/errors/category-already-exists"
 import { RecipeAlreadyExistsError } from "./use-cases/errors/recipe-already-exists-error"
 import { ResourceNotFoundError } from "./use-cases/errors/resource-not-found-error"
+import { InvalidCredentialsError } from "./use-cases/errors/invalid-credentials-error"
 
 type FastifyErrorHandler = FastifyInstance['errorHandler']
 
@@ -27,6 +28,8 @@ export const errorHandler: FastifyErrorHandler = (error, _req, reply) => {
   if (error instanceof ResourceNotFoundError)
     return reply.status(404).send({ issue: error.message })
 
+  if (error instanceof InvalidCredentialsError)
+    return reply.status(401).send({ issue: error.message })
 
   return reply.status(500).send({ message: "Internal server error." })
 }
