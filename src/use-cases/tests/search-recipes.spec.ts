@@ -45,4 +45,23 @@ describe("Search Recipes", () => {
       })
     ])
   })
+
+  it("should be able to search for recipes with pagination", async () => {
+    await recipesRepository.create({
+      categoryId: "1",
+      description: "description",
+      imageUrl: "image-url",
+      name: "recipe-01",
+      price: 10,
+      slug: "recipe-01",
+      totalDiscount: 0,
+    })
+
+    const response = await sut.execute({
+      page: 2,
+      query: "recipe-01"
+    })
+
+    expect(response.recipes.length).toBe(0)
+  })
 })

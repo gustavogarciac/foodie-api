@@ -90,9 +90,9 @@ export class InMemoryRecipesRepository implements RecipesRepository {
     let recipes
     
     if(query) {
-      recipes = this.recipes.filter(recipe => recipe.name.includes(query))
+      recipes = this.recipes.filter(recipe => recipe.name.includes(query)).slice((page - 1) * 20, page * 20)
     } else {
-      recipes = this.recipes
+      recipes = this.recipes.slice((page - 1) * 20, page * 20)
     }
 
     return recipes
